@@ -8,6 +8,7 @@ import { SiOpenaccess } from 'react-icons/si'
 import { CgProfile } from 'react-icons/cg'
 import Logo from '../assets/images/logo.svg'
 import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
+import { FaBookOpen } from 'react-icons/fa'
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true)
@@ -15,7 +16,7 @@ const Sidebar = () => {
   const location = useLocation()
 
   const Menus = [
-    { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },
+    { title: 'Mening kurslarim', path: '/dashboard', src: <FaBookOpen /> },
     { title: 'Course', path: '/course', src: <SiFuturelearn /> },
     { title: 'Profile', path: '/profile', src: <CgProfile /> },
     { title: 'Signin', path: '/login', src: <SiOpenaccess />, gap: 'true' },
@@ -23,28 +24,32 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Sidebar for Desktop */}
       <div
-        className={`${
+        className={`sidebar  ${
           open ? 'w-60' : 'w-fit'
-        } hidden sm:block relative h-screen duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
+        } hidden sm:block relative min-h-screen duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
       >
         <BsArrowLeftCircle
           className={`${
             !open && 'rotate-180'
-          } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
+          } absolute text-3xl bg-white fill-slate-800 rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
           onClick={() => setOpen(!open)}
         />
+        
+        {/* Logo */}
         <Link to='/'>
           <div className={`flex ${open && 'gap-x-4'} items-center`}>
-            <img src={Logo} alt='' className='pl-2' />
+           
             {open && (
               <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
-                Goal Quest
+                Maktab
               </span>
             )}
           </div>
         </Link>
 
+        {/* Menu List */}
         <ul className='pt-6'>
           {Menus.map((menu, index) => (
             <Link to={menu.path} key={index}>
@@ -68,18 +73,21 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
+
       {/* Mobile Menu */}
-      <div className="pt-3">
+      <div className="pt-3 sm:hidden">
         <HamburgerButton
           setMobileMenu={setMobileMenu}
           mobileMenu={mobileMenu}
         />
       </div>
+
+      {/* Mobile Menu Dropdown */}
       <div className="sm:hidden">
         <div
           className={`${
             mobileMenu ? 'flex' : 'hidden'
-          } absolute z-50 flex-col items-center self-end py-8 mt-16 space-y-6 font-bold sm:w-auto left-6 right-6 dark:text-white  bg-gray-50 dark:bg-slate-800 drop-shadow md rounded-xl`}
+          } absolute z-50 flex-col items-center self-end py-8 mt-16 space-y-6 font-bold sm:w-auto left-6 right-6 dark:text-white bg-gray-50 dark:bg-slate-800 drop-shadow md rounded-xl`}
         >
           {Menus.map((menu, index) => (
             <Link
@@ -88,7 +96,7 @@ const Sidebar = () => {
               onClick={() => setMobileMenu(false)}
             >
               <span
-                className={` ${
+                className={`${
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}
