@@ -20,7 +20,7 @@ const Login = () => {
     const handleLogin = () => {
         if (step === 2 && code === '1234') { // Kodni tekshirish
             alert('Login muvaffaqiyatli!');
-            navigate('/dashboard'); // Dashboard sahifasiga o‘tkazish
+            navigate('/sidebar'); // Dashboard sahifasiga o‘tkazish
         } else {
             alert('Noto‘g‘ri kod!');
         }
@@ -120,3 +120,4 @@ const Login = () => {
 };
 
 export default Login;
+   

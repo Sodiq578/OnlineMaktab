@@ -13,7 +13,7 @@ const Sidebar = () => {
   const location = useLocation();
 
   const Menus = [
-    { title: 'Barcha darsliklar', path: '/', src: <AiFillPieChart /> },
+    { title: 'Barcha darsliklar', path: '/home', src: <AiFillPieChart /> },
     { title: 'Profile', path: '/profile', src: <CgProfile /> },
     { title: 'Statistika', path: '/statistics', src: <AiFillPieChart /> },
     { title: 'Sozlamalar', path: '/settings', src: <SiOpenaccess /> },
@@ -30,7 +30,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar for Desktop */}
       <div
-        className={`sidebar ${open ? 'w-60' : 'w-fit'} hidden sm:block relative min-h-screen bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
+        className={`sidebar ${open ? 'w-60' : 'w-16'} hidden sm:block relative min-h-screen bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
         style={{ height: '100vh' }}
       >
         <BsArrowLeftCircle
@@ -42,7 +42,7 @@ const Sidebar = () => {
 
         {/* Logo */}
         <Link to='/home'>
-          <div className={`flex ${open && 'gap-x-4'} items-center`}>
+          <div className={`flex ${open ? 'gap-x-4' : ''} items-center`}>
             {open && (
               <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
                 Maktab
@@ -62,7 +62,7 @@ const Sidebar = () => {
                 }`}
               >
                 <span className='text-2xl'>{menu.src}</span>
-                <span className={`${!open && 'hidden'} origin-left duration-300 hover:block`}>
+                <span className={`${!open && 'hidden'} origin-left duration-300`}>
                   {menu.title}
                 </span>
               </li>
