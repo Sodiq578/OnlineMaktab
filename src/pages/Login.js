@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate ishlatish
+import { useNavigate } from 'react-router-dom';
 import loginImg from '../assets/images/loginImg.webp'; // Rasmni import qilish
 
 const Login = () => {
@@ -7,13 +7,16 @@ const Login = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [code, setCode] = useState('');
-    const navigate = useNavigate(); // Foydalanuvchini marshrut qilish uchun
+    const navigate = useNavigate();
+
+    // Telefon raqami formatini tekshirish uchun regex
+    const phoneRegex = /^\+998\d{9}$/;
 
     const handleNext = () => {
-        if (step === 1 && name && phone) {
+        if (step === 1 && name.trim() && phoneRegex.test(phone)) {
             setStep(2);
         } else {
-            alert('Ismingiz va telefon raqamingizni kiriting!');
+            alert('Ismingiz va telefon raqamingizni to‘g‘ri kiriting! (+998 formatda)');
         }
     };
 
@@ -120,5 +123,3 @@ const Login = () => {
 };
 
 export default Login;
-   
-
