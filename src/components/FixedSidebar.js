@@ -43,7 +43,7 @@ const Sidebar = () => {
                               Pro
                           </span>
                       </a>
-                  </li>
+                  </li>  
                   
               </ul>
           </div>

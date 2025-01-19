@@ -75,7 +75,8 @@
 }
 
 .card {
-    width: 300px;
+    max-width: 280px;
+    width: 90%;
     margin: 50px 0;
     background: linear-gradient(145deg, #ffffff, #e6e6e6);
     border-radius: 15px;
@@ -166,4 +167,17 @@
     .slider {
         margin-bottom: 20px;
     }
+}
+
+
+
+
+
+
+
+
+.burger{
+    background-color: rgb(234, 242, 225);
+    z-index: 3443;
+
 }

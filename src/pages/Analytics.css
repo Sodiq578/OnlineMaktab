@@ -1,0 +1,16 @@
+.page {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #ff8c00;
+  }
+  
+  img {
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  
