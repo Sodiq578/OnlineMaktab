@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import loginImg from '../assets/images/loginImg.webp'; // Rasmni import qilish
+import loginImg from '../assets/images/loginImg.webp';
 
 const Login = () => {
     const [step, setStep] = useState(1); // Bosqichni boshqarish
@@ -9,11 +9,11 @@ const Login = () => {
     const [code, setCode] = useState('');
     const navigate = useNavigate();
 
-    // Telefon raqami formatini tekshirish uchun regex
+    // Telefon raqami formatini tekshirish
     const phoneRegex = /^\+998\d{9}$/;
 
     const handleNext = () => {
-        if (step === 1 && name.trim() && phoneRegex.test(phone)) {
+        if (name.trim() && phoneRegex.test(phone)) {
             setStep(2);
         } else {
             alert('Ismingiz va telefon raqamingizni to‘g‘ri kiriting! (+998 formatda)');
@@ -21,9 +21,9 @@ const Login = () => {
     };
 
     const handleLogin = () => {
-        if (step === 2 && code === '1234') { // Kodni tekshirish
+        if (code === '1234') {
             alert('Login muvaffaqiyatli!');
-            navigate('/sidebar'); // Dashboard sahifasiga o‘tkazish
+            navigate('/Sidebar');
         } else {
             alert('Noto‘g‘ri kod!');
         }
@@ -31,7 +31,7 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex">
-            {/* Chap tomondagi login form */}
+            {/* Login form qismi */}
             <div className="flex-1 bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-8">
                 <div className="w-full max-w-md bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6">
                     <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
@@ -108,7 +108,7 @@ const Login = () => {
                 </div>
             </div>
 
-            {/* O‘ng tomondagi rasm qismi */}
+            {/* O‘ng tomondagi rasm */}
             <div
                 className="flex-1 hidden lg:flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${loginImg})` }}
